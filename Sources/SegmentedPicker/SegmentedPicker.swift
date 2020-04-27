@@ -2,13 +2,11 @@ import SwiftUI
 import Shapes
 
 // MARK: - Style Setup
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public struct KSegmentedPickerConfiguration {
     public let isDisabled: Bool
     public let isSelected: Bool
     public let label: AnyView
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public protocol KSegmentedPickerStyle {
     associatedtype Body: View
     associatedtype Selection: View
@@ -18,7 +16,6 @@ public protocol KSegmentedPickerStyle {
     func makeSelectionFill(configuration: KSegmentedPickerConfiguration) -> Self.Selection
     func makeBody(configuration: KSegmentedPickerConfiguration) -> Self.Body
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 extension KSegmentedPickerStyle {
     func makeDividerTypeErased(isVertical: Bool) -> AnyView {
         AnyView(self.makeDivider(isVertical: isVertical))
@@ -30,7 +27,6 @@ extension KSegmentedPickerStyle {
         AnyView(self.makeBody(configuration: configuration))
     }
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public struct AnyKSegmentedPickerStyle: KSegmentedPickerStyle {
     private let _makeDivider: (Bool) -> AnyView
     public func makeDivider(isVertical: Bool) -> some View {
@@ -51,7 +47,6 @@ public struct AnyKSegmentedPickerStyle: KSegmentedPickerStyle {
         self._makeSelectionFill = style.makeSelectionFillTypeErased
     }
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public struct DefaultKSegmentedPickerStyle: KSegmentedPickerStyle {
     public init() {}
     public func makeDivider(isVertical: Bool) -> some View {
@@ -75,11 +70,9 @@ public struct DefaultKSegmentedPickerStyle: KSegmentedPickerStyle {
             .fill(Color.green)
     }
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public struct KSegmentedPickerStyleKey: EnvironmentKey {
     public static let defaultValue: AnyKSegmentedPickerStyle  = AnyKSegmentedPickerStyle(DefaultKSegmentedPickerStyle())
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 extension EnvironmentValues {
     public var kSegmentedPickerStyle: AnyKSegmentedPickerStyle {
         get {
@@ -90,7 +83,6 @@ extension EnvironmentValues {
         }
     }
 }
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 extension View {
     public func kSegmentedPickerStyle<S>(_ style: S) -> some View where S: KSegmentedPickerStyle {
         self.environment(\.kSegmentedPickerStyle, AnyKSegmentedPickerStyle(style))
@@ -98,7 +90,6 @@ extension View {
 }
 
 
-@available(iOS 13.0, macOS 10.15, watchOS 6.0 , *)
 public struct SegmentedPicker<Data: RandomAccessCollection, Content: View>: View where Data.Element: Hashable  {
     @Environment(\.kSegmentedPickerStyle) var style: AnyKSegmentedPickerStyle
     typealias Key = PickerKey<Data.Element, Anchor<CGRect>>
