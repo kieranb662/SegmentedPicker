@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img src="Segmented-Picker.gif" alt="Segmented Picker Example Gif" width="500"/>
+    <img src="Segmented-Picker.gif" alt="Segmented Picker Example Gif" width="300"/>
 </p>
 
 Use the SegmentedPicker library to create custom vertical or horizontal `SegmentedPicker`s. Follow along with the examples below to get started quickly. 
